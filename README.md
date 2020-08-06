@@ -1,1 +1,1 @@
-new project penta
+new project penta Sci
