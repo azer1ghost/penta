@@ -150,9 +150,11 @@
                                     @foreach ($variable['articles'] as $article)
                                         <div class="col-md-6">
                                             <article class="sj-post sj-editorchoice">
-                                                <figure class="sj-postimg">
-                                                    <img style="width:200px; height:170px" src="storage/{{$article->image}}" alt="image description">
-                                                </figure>
+                                                <a href="{{route('Articles.Read', ['slug' => $article->slug])}}">
+                                                    <figure class="sj-postimg">
+                                                        <img style="width:200px; height:170px" src="storage/{{$article->image}}" alt="image description">
+                                                    </figure>
+                                                </a>
                                                 <div class="sj-postcontent">
                                                     <div class="sj-head">
                                                         <span><i class="far fa-user"></i>  <a href="javascript:void(0);">{{$article->author->name}}</a></span>

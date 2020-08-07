@@ -11,7 +11,7 @@
                             <a href="index-2.html"><img src="{{ asset('storage/')."/".setting('site.logo') }}" alt="image description"></a>
                         </strong>
                         <div class="sj-description">
-                            <p>Eiusmod tempor incididunt ut labore etai dolore magna aliqua enim nostrud exercitation... <a href="javascript:void(0);">Read More</a></p>
+                            <p> {{ substr(setting('site.description'), 0, 90) }} <a href="javascript:void(0);">Read More</a></p> 
                         </div>
                         <ul class="sj-socialicons sj-socialiconssimple">
                             <li class="sj-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class="sj-footerbottom">
-                <p class="sj-copyrights">© 2019 <span>Amentojourn</span>. All Rights Reserved</p>
+                <p class="sj-copyrights">© {{date("Y")}} <span>{{setting('site.title')}}</span>. All Rights Reserved</p>
             </div>
         </div>
     </div>

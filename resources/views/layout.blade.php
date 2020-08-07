@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@yield('title')</title>
         @include('frontend.default.stylesheets')
+        @yield('style')
     </head>
     <body class="sj-home">
         @include('frontend.moduls.static.loader')
