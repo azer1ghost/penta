@@ -14,8 +14,18 @@
 				$class .= "menu-item-has-children page_item_has_children";
 			}
 
-			if (false) { // if active  add this class
-				$class .= " current-menu-item";
+			$menu_Url = $menu['url'];
+
+			if (!$menu['parent_id']) { // if is not child and showing add "active" class
+				
+				if (Request::is(trim($menu_Url, "/"))) 
+				{ 
+					$class .= " current-menu-item";
+				} 
+				elseif (Request::is($menu_Url)) 
+				{
+					$class .= " current-menu-item";
+				}
 			}
 
 			if ($class) {
@@ -23,8 +33,6 @@
 			} else {
 				$menu_Item .= ">";
 			}
-
-			$menu_Url = $menu['url'];
 
 			if ($menu_Url) {
 				$menu_Item .= "<a href='$menu_Url' >";
@@ -34,7 +42,7 @@
 
 			$iconClass = $menu['icon_class'];
 
-			if ($iconClass && !$menu['parent_id']) {
+			if ($iconClass) {
 				$menu_Item .= "<i class='$iconClass'></i> ";
 			}
 

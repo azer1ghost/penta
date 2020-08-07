@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('title', setting('site.title'))
+@section('description', setting('site.description'))
 
 @section('content')
     @include('frontend.moduls.static.header')
