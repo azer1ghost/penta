@@ -1,10 +1,27 @@
 @extends('layout')
 
-@section('title', 'Articles')
+@php
+    $data = [
+        'title' => "Articles",
+        'bannerText' => 'Articles',
+        'navigation' => [
+            [
+                'title' => 'Home',
+                'url'   => route('Page.homepage')
+            ],
+            [
+                'title' => 'Articles',
+                'url'   => route('Articles.list')
+            ]
+        ]
+    ]
+@endphp
+@section('title', $data['title'])
 
 @section('content')
     @include('frontend.moduls.static.header')
-
+    @include('frontend.moduls.banner',$data)
+    
     <!--Main Start-->
     <main id="sj-main" class="sj-main sj-haslayout sj-sectionspace">
         {{-- add anything here --}}
@@ -103,7 +120,7 @@
                                         <div class="sj-uploadcontent">
                                             <span>Do You Want To Upload Your Article?</span>
                                             <h3>Submit Now &amp; Make Your Online Presence</h3>
-                                            <a class="sj-btn" href="javascript:void(0);">Submit Now</a>
+                                            <a class="sj-btn" href="{{route('Articles.create')}}">Submit Now</a>
                                         </div>
                                     </figcaption>
                                 </figure>
@@ -150,7 +167,7 @@
                                     @foreach ($variable['articles'] as $article)
                                         <div class="col-md-6">
                                             <article class="sj-post sj-editorchoice">
-                                                <a href="{{route('Articles.Read', ['slug' => $article->slug])}}">
+                                                <a href="{{route('Articles.read', ['slug' => $article->slug])}}">
                                                     <figure class="sj-postimg">
                                                         <img style="width:200px; height:170px" src="storage/{{$article->image}}" alt="image description">
                                                     </figure>
@@ -158,13 +175,13 @@
                                                 <div class="sj-postcontent">
                                                     <div class="sj-head">
                                                         <span><i class="far fa-user"></i>  <a href="javascript:void(0);">{{$article->author->name}}</a></span>
-                                                        <h3><a href="{{route('Articles.Read', ['slug' => $article->slug])}}">{{$article->title}}</a></h3>
+                                                        <h3><a href="{{route('Articles.read', ['slug' => $article->slug])}}">{{$article->title}}</a></h3>
                                                     </div>
                                                     <div class="sj-description">
                                                         <p>{{$article->meta_description}}...</p>
                                                         <span><i class="fas fa-tag"></i>  <a href="javascript:void(0);">{{$article->category->name}}</a></span>
                                                     </div>
-                                                    <a class="sj-btn" href="{{route('Articles.Read', ['slug' => $article->slug])}}">View Full Article</a>
+                                                    <a class="sj-btn" href="{{route('Articles.read', ['slug' => $article->slug])}}">View Full Article</a>
                                                 </div>
                                             </article>
                                         </div>

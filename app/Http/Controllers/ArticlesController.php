@@ -37,5 +37,10 @@ class ArticlesController extends Controller
         //return view('frontend.articleRead', compact('variable'));
     }
 
+    public function create()
+    {
+        return view('frontend.articleCreate');
+    }
+
     
 }

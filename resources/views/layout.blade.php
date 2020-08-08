@@ -22,5 +22,6 @@
             <!--Wrapper End-->
         @include('frontend.moduls.static.search')
         @include('frontend.default.js_scripts')
+        @yield('scripts')
     </body>
 </html>

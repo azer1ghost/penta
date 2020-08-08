@@ -7,38 +7,33 @@
     </ul>
     <div class="sj-languagelogin">
 
-        @if (Route::has('login'))
+        @if (Route::has('Author.login'))
             <div class="sj-loginarea">
                 <ul class="sj-loging">
                     @auth
                     <div style="display: block" class="sj-userloginarea">
                         <a href="javascript:void(0);">
                             <i class="fa fa-angle-down"></i>
-                            <img src="frontend/images/user-img.jpg" alt="image description">
+                            <img src="{{ asset('storage')."/".Auth::user()->avatar}}" alt="image description">
                             <div class="sj-loginusername">
-                                <h3>Hi, Racheal</h3>
-                                <span>Author</span>
+                                <h3>Hi, {{Auth::user()->name}}</h3>
+                                <span>{{Auth::user()->role->display_name}}</span>
                             </div>
                         </a>
                         <nav class="sj-usernav">
                             <ul>
                                 <li><a href="underreview.html"><i class="lnr lnr-sync"></i><span>Articles Under Review</span></a></li>
-                                <li><a href="addtemplates.html"><i class="lnr lnr-briefcase"></i><span>Add Templates</span></a></li>
                                 <li><a href="aticle-list.html"><i class="lnr lnr-sync"></i><span>Aticle List</span></a></li>
-                                <li><a href="generalsettings.html"><i class="lnr lnr-layers"></i><span>General Settings</span></a></li>
-                                <li><a href="manageuser.html"><i class="lnr lnr-users"></i><span>Manage Users</span></a></li>
-                                <li><a href="manageeditions.html"><i class="lnr lnr-tag"></i><span>Manage Editions</span></a></li>
-                                <li><a href="emailtemplates.html"><i class="lnr lnr-envelope"></i><span>Email Templates</span></a></li>
                                 <li><a href="accountsettings.html"><i class="lnr lnr-lock"></i><span>Account Settings</span></a></li>
-                                <li><a href="loginregister.html"><i class="lnr lnr-exit"></i><span>Logout</span></a></li>
+                                <li><a href="{{route('Author.logout')}}"><i class="lnr lnr-exit"></i><span>Logout</span></a></li>
                             </ul>
                         </nav>
                     </div>
                     @else
-                        <li><a href="javascript:void(0);">Login</a></li>
+                        <li><a href="{{route('Author.login')}}">Login</a></li>
 
-                        @if (Route::has('register'))
-                            <li><a href="javascript:void(0);">Register</a></li>
+                        @if (Route::has('Author.login'))
+                            <li><a href="{{route('Author.login')}}">Register</a></li>
                         @endif
                     @endauth
                 </ul>
