@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PassReset;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AuthorLoginController extends Controller
 {
@@ -27,7 +29,7 @@ class AuthorLoginController extends Controller
             'email'     => 'required|string|email|exists:users,email',
             'password'  => 'required|string',
         ];
-        
+
         $messages = trans('lang.login.messages');
 
         $validator = Validator::make($credentials, $rules, $messages);
@@ -54,7 +56,46 @@ class AuthorLoginController extends Controller
 
             return [
                 'status' => false,
-                'message' => 'Password is bad',
+                'message' => trans('lang.login.failed'),
+                'url' => null
+            ];
+        }
+    }
+
+    public function resetPass(Request $request)
+    {
+        $credentials = $request->only('email');
+
+        $rules = [
+            'email' => 'required|string|email|exists:users,email'
+        ];
+
+        $messages = trans('lang.login.messages');
+
+        $validator = Validator::make($credentials, $rules, $messages);
+
+        if ($validator->fails()) {
+
+            return [
+                'status' => false,
+                'message' => $validator->errors()->first(),
+                'url' => null
+            ];
+        } else {
+
+            //Mail
+            Mail::send(
+                "email.test",
+                ["name" => "Deneme"],
+                function($message) use ($request) {
+                         $message ->to($request->email, "User Name")
+                                  ->subject("Password Reset");
+                }
+            );
+
+            return [
+                'status' => false,
+                'message' => "Reset Email sended",
                 'url' => null
             ];
         }

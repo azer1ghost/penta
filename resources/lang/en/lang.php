@@ -9,6 +9,7 @@ return [
         'keepLogged' => 'keep me logged in',
         'forgot' => 'Forgot Password',
         'login' => 'Login',
+        'failed' => 'These credentials do not match our records.',
         'messages' => [
             'email.required' => 'The email is required.',
             'email.email'    => 'The email needs to have a valid format.',

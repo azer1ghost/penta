@@ -51,7 +51,7 @@
         $("#LoginForm").submit(function(e) {
             e.preventDefault(); // avoid to execute the actual submit of the form.
             var form = $("#LoginForm");
-            var url = '{{ route('Author.check') }}';
+            var url = '{{ route('Author.reset') }}';
             $.ajax({
                 type: "POST",
                 url: url,
