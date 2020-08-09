@@ -11,6 +11,7 @@ Route::get('/article/create', 'ArticlesController@create')->name('Articles.creat
 
 Route::get('/authors', 'AuthorController@index')->name('Author.list');
 Route::get('/login', 'AuthorLoginController@index')->name('Author.login');
+Route::get('/register', 'AuthorLoginController@register')->name('Author.register');
 Route::post('/loginCheck', 'AuthorLoginController@authenticate')->name('Author.check');
 Route::get('/logout', 'AuthorLoginController@logout')->name('Author.logout');
 

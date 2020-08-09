@@ -15,6 +15,6 @@ class PageController extends Controller
     public function getPage($slug)
     {
         $page = Pages::where('slug', $slug)->first();
-        return view('frontend.pageViewer',['page' => $page]);
+        return view('frontend.sections.pages.pageViewer',['page' => $page]);
     }
 }

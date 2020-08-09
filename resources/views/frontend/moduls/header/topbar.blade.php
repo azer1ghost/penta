@@ -33,7 +33,7 @@
                         <li><a href="{{route('Author.login')}}">Login</a></li>
 
                         @if (Route::has('Author.login'))
-                            <li><a href="{{route('Author.login')}}">Register</a></li>
+                            <li><a href="{{route('Author.register')}}">Register</a></li>
                         @endif
                     @endauth
                 </ul>

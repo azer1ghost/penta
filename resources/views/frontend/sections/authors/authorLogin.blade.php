@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', setting('site.title'))
+@section('title', trans('lang.login.pageTitle'))
 @section('description', setting('site.description'))
 @section('style')
     <style>
@@ -17,11 +17,37 @@
             width: 33% !important;
         }
 
+        #LoginFormDiv {
+            display: none
+        }
+
+        #RegisterFormDiv {
+            display: none
+        }
+        #information-message{
+            color:red
+        }
+        #login_submit_btn{
+            height: 35px;
+            padding-right: 25px;
+            padding-left: 25px;
+            border-radius: 5px;
+            text-transform: capitalize;
+            font: 500 14px/35px 'Quicksand', Arial, Helvetica, sans-serif;
+        }
+
     </style>
 @endsection
 
 @section('scripts')
     <script>
+
+        if (window.location.pathname === "/login") {
+            $("#LoginFormDiv").show()
+        }else{
+            $("#RegisterFormDiv").show()
+        }
+
         $("#LoginForm").submit(function(e) {
             e.preventDefault(); // avoid to execute the actual submit of the form.
             var form = $("#LoginForm");
@@ -34,15 +60,20 @@
                     $("#login_loader").show()
                 },
                 success: function(data) {
-                    $("#login_loader").hide() 
-                    //login_submit_btn
 
-                    // if(){
+                    $("#login_loader").hide()  //$('#login_submit_btn')  // btn-message
 
-                    // }else{
+                    if(data['status']){
 
-                    // }
+                        window.location.replace(data['url']);
 
+                    } else {
+
+                        $("#information-message").html( data['message'] );
+                        $("#login_submit_btn").removeClass('btn-primary').addClass("btn-danger")
+                        $("#login_submit_btn").html('Retry')
+                        
+                    }
 
                     console.log(data); // show response from the php script.
                 },
@@ -60,15 +91,14 @@
     <!--Main Start-->
     <main id="sj-main" class="sj-main sj-haslayout sj-sectionspace">
 
-
         <div id="sj-twocolumns" class="sj-twocolumns">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                    <div id="LoginFormDiv" class="mx-auto col-12 col-sm-12 col-md-12 col-lg-4">
                         <aside id="sj-sidebarvtwo" class="sj-sidebar">
                             <div class="sj-widget sj-widgetlogin">
-                                <div class="sj-widgetheading">
-                                    <h3>Login</h3>
+                                <div class="sj-borderheading">
+                                    <h3>{{ trans('lang.login.title') }}</h3>
                                 </div>
                                 <div class="sj-widgetcontent">
                                     <form id="LoginForm" class="sj-formtheme">
@@ -87,8 +117,9 @@
                                                 </div>
                                                 <a class="sj-forgorpass" href="javascript:void(0);">Forgot Password?</a>
                                             </div>
+                                            <div id="information-message"></div>
                                             <div class="sj-btnarea">
-                                                <button class="fa-2x sj-btn sj-btnactive" id="login_submit_btn" type="submit">Login
+                                                <button class="fa-2x btn-primary" id="login_submit_btn" type="submit">Login
                                                     <i style="display: none" id="login_loader" class="fas fa-spinner fa-spin"></i>
                                                 </button>
                                             </div>
@@ -98,7 +129,7 @@
                             </div>
                         </aside>
                     </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+                    <div id="RegisterFormDiv" class="mx-auto col-12 col-sm-12 col-md-12 col-lg-8">
                         <div id="sj-content" class="sj-content">
                             <div class="sj-registerarea">
                                 <div class="registernow">
@@ -166,8 +197,6 @@
                 </div>
             </div>
         </div>
-
-
 
     </main>
     <!--Main End-->

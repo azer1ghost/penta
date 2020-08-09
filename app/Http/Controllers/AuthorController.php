@@ -15,6 +15,6 @@ class AuthorController extends Controller
                             ->limit(10) //selectable from articles
                             ->get();
 
-        return view('frontend.authors', compact('variable'));
+        return view('frontend.sections.authors.authors', compact('variable'));
     }
 }

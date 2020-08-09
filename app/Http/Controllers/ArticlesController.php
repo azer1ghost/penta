@@ -24,7 +24,7 @@ class ArticlesController extends Controller
         
         $variable['categories'] = Categories::withCount('articles')->get();
 
-        return view('frontend.articles', compact('variable'));
+        return view('frontend.sections.articles.articles', compact('variable'));
     }
 
 
@@ -33,13 +33,13 @@ class ArticlesController extends Controller
        
         $article = Articles::where('slug', $slug)->first();
 
-        return view('frontend.articleRead',['article' => $article]);
+        return view('frontend.sections.articles.articleRead',['article' => $article]);
         //return view('frontend.articleRead', compact('variable'));
     }
 
     public function create()
     {
-        return view('frontend.articleCreate');
+        return view('frontend.sections.articles.articleCreate');
     }
 
     
