@@ -7,7 +7,7 @@
         'navigation' => [
             [
                 'title' => 'Home',
-                'url'   => route('Page.homepage')
+                'url'   => route('Page.index')
             ],
             [
                 'title' => 'Articles',

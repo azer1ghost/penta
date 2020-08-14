@@ -25,7 +25,7 @@
             display: none
         }
         #information-message{
-            color:red
+            color: #ff0000
         }
         #login_submit_btn{
             height: 35px;
@@ -51,7 +51,7 @@
         $("#LoginForm").submit(function(e) {
             e.preventDefault(); // avoid to execute the actual submit of the form.
             var form = $("#LoginForm");
-            var url = '{{ route('Author.reset') }}';
+            var url = '{{ route('Author.check') }}';
             $.ajax({
                 type: "POST",
                 url: url,
@@ -72,7 +72,7 @@
                         $("#information-message").html( data['message'] );
                         $("#login_submit_btn").removeClass('btn-primary').addClass("btn-danger")
                         $("#login_submit_btn").html('Retry')
-                        
+
                     }
 
                     console.log(data); // show response from the php script.
@@ -87,7 +87,7 @@
 
 @section('content')
     @include('frontend.moduls.static.header')
-    
+
     <!--Main Start-->
     <main id="sj-main" class="sj-main sj-haslayout sj-sectionspace">
 

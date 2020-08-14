@@ -7,7 +7,7 @@
         'navigation' => [
             [
                 'title' => 'Home',
-                'url'   => route('Page.homepage')
+                'url'   => route('Page.index')
             ],
             [
                 'title' => 'Articles',
@@ -21,7 +21,7 @@
 @section('content')
     @include('frontend.moduls.static.header')
     @include('frontend.moduls.banner',$data)
-    
+
     <!--Main Start-->
     <main id="sj-main" class="sj-main sj-haslayout sj-sectionspace">
         {{-- add anything here --}}
@@ -96,14 +96,14 @@
                                     <div style="float:right;">
                                         <a class="btn btn-outline-primary btn-sm " href="javascript:void(0)">Reset</a>
                                     </div>
-                                        
-                                        
-                                    
-                                    
-                                    
-                                       
-                                        
-                            
+
+
+
+
+
+
+
+
                                 </div>
                             </div>
                         </aside>
@@ -115,7 +115,7 @@
                             <span class="sj-showitems">Showing <em>1</em> to <em>20</em> of <em>153</em> Articles</span>
                             <div class="sj-uploadarticle">
                                 <figure class="sj-uploadarticleimg">
-                                    <img src="frontend/images/upload-articlebg.jpg" alt="image description">
+                                    <img src="{{asset('frontend/images/upload-articlebg.jpg')}}" alt="image description">
                                     <figcaption>
                                         <div class="sj-uploadcontent">
                                             <span>Do You Want To Upload Your Article?</span>
@@ -169,7 +169,7 @@
                                             <article class="sj-post sj-editorchoice">
                                                 <a href="{{route('Articles.read', ['slug' => $article->slug])}}">
                                                     <figure class="sj-postimg">
-                                                        <img style="width:200px; height:170px" src="storage/{{$article->image}}" alt="image description">
+                                                        <img style="width:200px; height:170px" src="{{asset('storage').'/'.$article->image}}" alt="image description">
                                                     </figure>
                                                 </a>
                                                 <div class="sj-postcontent">
