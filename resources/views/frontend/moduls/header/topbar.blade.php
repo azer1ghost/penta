@@ -30,45 +30,47 @@
                         </nav>
                     </div>
                     @else
-                        <li><a href="{{route('Author.login')}}">Login</a></li>
+                        <li><a href="{{route('Author.login')}}">@lang('lang.header.login')</a></li>
 
                         @if (Route::has('Author.login'))
-                            <li><a href="{{route('Author.register')}}">Register</a></li>
+                            <li><a href="{{route('Author.register')}}">@lang('lang.header.register')</a></li>
                         @endif
                     @endauth
                 </ul>
             </div>
         @endif
 
-
-        <!-- 
+        @auth
+            @else
             <div class="sj-languages">
                 <a id="sj-languages-button" href="javascript:void(0);">
-                    <img src="frontend/images/flags/flag-02.jpg" alt="image description">
+                    <img src="{{asset('frontend/images/flags/flag-02.jpg')}}" alt="image description">
                     <span>Eng</span>
                     <i class="fa fa-angle-down"></i>
                 </a>
                 <ul>
                     <li>
                         <a href="javascript:void(0);">
-                            <img src="frontend/images/flags/flag-01.jpg" alt="image description">
+                            <img src="{{asset('frontend/images/flags/flag-01.jpg')}}" alt="image description">
                             <span>Ara</span>
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0);">
-                            <img src="frontend/images/flags/flag-02.jpg" alt="image description">
+                            <img src="{{asset('frontend/images/flags/flag-02.jpg')}}" alt="image description">
                             <span>Eng</span>
                         </a>
                     </li>
                     <li>
                         <a href="javascript:void(0);">
-                            <img src="frontend/images/flags/flag-03.jpg" alt="image description">
+                            <img src="{{asset('frontend/images/flags/flag-03.jpg')}}" alt="image description">
                             <span>Chi</span>
                         </a>
                     </li>
                 </ul>
             </div>
-        -->
+        @endauth
+
+
     </div>
 </div>

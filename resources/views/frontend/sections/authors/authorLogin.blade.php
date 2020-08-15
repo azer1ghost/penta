@@ -42,7 +42,7 @@
 @section('scripts')
     <script>
 
-        if (window.location.pathname === "/login") {
+        if (window.location.pathname === "author/login") {
             $("#LoginFormDiv").show()
         }else{
             $("#RegisterFormDiv").show()

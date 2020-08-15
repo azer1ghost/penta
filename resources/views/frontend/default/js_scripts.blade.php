@@ -8,3 +8,4 @@
 <script src="{{ asset('frontend/js/countdown.js') }}"></script>
 <script src="{{ asset('frontend/js/appear.js') }}"></script>
 <script src="{{ asset('frontend/js/main.js') }}"></script>
+
