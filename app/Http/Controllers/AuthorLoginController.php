@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\PassReset;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,14 +24,20 @@ class AuthorLoginController extends Controller
     public function authenticate(Request $request)
     {
 
+
         $credentials = $request->only('email', 'password');
 
+        $locale = $request->input('locale');
+
         $rules = [
-            'email'     => 'required|string|email|exists:users,email',
-            'password'  => 'required|string',
+            'email'     => 'required|string|email:rfc,dns|exists:users,email',
+            'password'  => 'required|string'
         ];
 
-        $messages = trans('lang.login.messages');
+        $messages = [
+            'email.required' =>  trans('email.required', [], $locale),
+            'email.email'    =>  trans('email.email', [], $locale),
+        ];
 
         $validator = Validator::make($credentials, $rules, $messages);
 
@@ -56,7 +63,7 @@ class AuthorLoginController extends Controller
 
             return [
                 'status' => false,
-                'message' => trans('lang.login.failed'),
+                'message' => trans('login.failed', [], $locale),
                 'url' => null
             ];
         }

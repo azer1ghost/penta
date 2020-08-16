@@ -16,7 +16,7 @@
                             <i class="fa fa-angle-down"></i>
                             <img src="{{ asset('storage')."/".Auth::user()->avatar}}" alt="image description">
                             <div class="sj-loginusername">
-                                <h3>Hi, {{Auth::user()->name}}</h3>
+                                <h3>@lang('header.hi'), {{Auth::user()->name}}</h3>
                                 <span>{{Auth::user()->role->display_name}}</span>
                             </div>
                         </a>
@@ -26,14 +26,15 @@
                                 <li><a href="aticle-list.html"><i class="lnr lnr-sync"></i><span>Aticle List</span></a></li>
                                 <li><a href="accountsettings.html"><i class="lnr lnr-lock"></i><span>Account Settings</span></a></li>
                                 <li><a href="{{route('Author.logout')}}"><i class="lnr lnr-exit"></i><span>Logout</span></a></li>
+
                             </ul>
                         </nav>
                     </div>
                     @else
-                        <li><a href="{{route('Author.login')}}">@lang('lang.header.login')</a></li>
+                        <li><a href="{{route('Author.login')}}">{{trans('header.login')}}</a></li>
 
                         @if (Route::has('Author.login'))
-                            <li><a href="{{route('Author.register')}}">@lang('lang.header.register')</a></li>
+                            <li><a href="{{route('Author.register')}}">@lang('header.register')</a></li>
                         @endif
                     @endauth
                 </ul>
@@ -43,30 +44,22 @@
         @auth
             @else
             <div class="sj-languages">
+
                 <a id="sj-languages-button" href="javascript:void(0);">
-                    <img src="{{asset('frontend/images/flags/flag-02.jpg')}}" alt="image description">
-                    <span>Eng</span>
+                    <img src="{{asset('storage')."/".$currentLanguage->flag}}" alt="image description">
+                    <span style="text-transform: uppercase">{{ $currentLanguage->locale }}</span>
                     <i class="fa fa-angle-down"></i>
                 </a>
+
                 <ul>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <img src="{{asset('frontend/images/flags/flag-01.jpg')}}" alt="image description">
-                            <span>Ara</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <img src="{{asset('frontend/images/flags/flag-02.jpg')}}" alt="image description">
-                            <span>Eng</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);">
-                            <img src="{{asset('frontend/images/flags/flag-03.jpg')}}" alt="image description">
-                            <span>Chi</span>
-                        </a>
-                    </li>
+                    @foreach ($altLocalizedUrls as $lng)
+                        <li>
+                            <a hreflang="{{ $lng['locale'] }}" href="{{ $lng['url'] }}">
+                                <img src="{{ asset('storage')."/".$lng['flag']}}" alt="image description">
+                                <span>{{ $lng['locale'] }}</span>
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         @endauth

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05cfed32452d2186bb3237184c245bb1",
+    "content-hash": "2834bbf5eec68aa1906d843567c576d6",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -7312,6 +7312,57 @@
             "time": "2020-07-12T23:59:07+00:00"
         },
         {
+            "name": "waavi/translation",
+            "version": "2.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Waavi/translation.git",
+                "reference": "30b095364ea5d6701377d53f5eadec0e6d0b517d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Waavi/translation/zipball/30b095364ea5d6701377d53f5eadec0e6d0b517d",
+                "reference": "30b095364ea5d6701377d53f5eadec0e6d0b517d",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^2.5",
+                "laravel/framework": "~6.0|~7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.2.3",
+                "orchestra/testbench": "~4.0",
+                "phpunit/phpunit": "~8.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Waavi\\Translation\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Waavi",
+                    "email": "info@waavi.com",
+                    "homepage": "http://waavi.com"
+                }
+            ],
+            "description": "A Translation package for Laravel 5 with database and cache support",
+            "keywords": [
+                "laravel",
+                "laravel-translator",
+                "localization",
+                "translation",
+                "translator",
+                "waavi"
+            ],
+            "time": "2020-03-09T18:12:22+00:00"
+        },
+        {
             "name": "webmozart/assert",
             "version": "1.9.1",
             "source": {
@@ -7367,7 +7418,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.2.5"
+        "php": "^7.2.5",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"

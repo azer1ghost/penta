@@ -34,7 +34,7 @@ $(document).ready(function() {
         url = '';
     }
 
-    console.log("real-URL : "+url)
+    //console.log("real-URL : "+url)
 
     // Loop all menu items
     $('.menu li').each(function(){

@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', trans('lang.login.pageTitle'))
+@section('title', trans('login.pageTitle'))
 @section('description', setting('site.description'))
 @section('style')
     <style>
@@ -42,7 +42,7 @@
 @section('scripts')
     <script>
 
-        if (window.location.pathname === "author/login") {
+        if (window.location.pathname.split("/").pop() === "login") {
             $("#LoginFormDiv").show()
         }else{
             $("#RegisterFormDiv").show()
@@ -98,28 +98,29 @@
                         <aside id="sj-sidebarvtwo" class="sj-sidebar">
                             <div class="sj-widget sj-widgetlogin">
                                 <div class="sj-borderheading">
-                                    <h3>{{ trans('lang.login.title') }}</h3>
+                                    <h3>@lang('login.title')</h3>
                                 </div>
                                 <div class="sj-widgetcontent">
                                     <form id="LoginForm" class="sj-formtheme">
                                         @csrf
+                                        <input type="hidden" name="locale" value="{{ $currentLanguage->locale }}">
                                         <fieldset>
                                             <div class="form-group">
-                                                <input type="email" name="email" class="form-control" placeholder="E-mail">
+                                                <input type="email" name="email" class="form-control" placeholder="@lang('login.email')">
                                             </div>
                                             <div class="form-group">
-                                                <input type="password" name="password" class="form-control" placeholder="Password">
+                                                <input type="password" name="password" class="form-control" placeholder="@lang('login.password')">
                                             </div>
                                             <div class="form-group sj-forgotpass">
                                                 <div class="sj-checkbox">
                                                     <input name="remember_me" type="checkbox" id="remember_me">
-                                                    <label for="remember_me">keep me logged in</label>
+                                                    <label for="remember_me">@lang('login.keepLogged')</label>
                                                 </div>
-                                                <a class="sj-forgorpass" href="javascript:void(0);">Forgot Password?</a>
+                                                <a class="sj-forgorpass" href="javascript:void(0);">{{ trans('login.forgot') }}</a>
                                             </div>
                                             <div id="information-message"></div>
                                             <div class="sj-btnarea">
-                                                <button class="fa-2x btn-primary" id="login_submit_btn" type="submit">Login
+                                                <button class="fa-2x btn-primary" id="login_submit_btn" type="submit">@lang('login.button')
                                                     <i style="display: none" id="login_loader" class="fas fa-spinner fa-spin"></i>
                                                 </button>
                                             </div>
