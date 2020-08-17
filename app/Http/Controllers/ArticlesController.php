@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Model\Articles;
 use App\Model\Categories;
+use Illuminate\Support\Facades\App;
 //use App\Model\Users;
 //use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
-{   
- 
+{
+
     public function index(){
 
         $variable['articles'] = Articles::where('status', 'PUBLISHED')
@@ -20,8 +21,8 @@ class ArticlesController extends Controller
         $variable['total'] = Articles::count();
 
         // $variable['categories'] = Categories::all();
-        
-        
+
+
         $variable['categories'] = Categories::withCount('articles')->get();
 
         return view('frontend.sections.articles.articles', compact('variable'));
@@ -30,11 +31,14 @@ class ArticlesController extends Controller
 
 
     public function read($slug){
-       
-        $article = Articles::where('slug', $slug)->first();
+
+        // Loads current locale translations
+        $locale = App::getLocale();
+        $article = Articles::withTranslation($locale)->where('slug', $slug)->first();
+        $article = $article->translate($locale);
 
         return view('frontend.sections.articles.articleRead',['article' => $article]);
-        //return view('frontend.articleRead', compact('variable'));
+
     }
 
     public function create()
@@ -42,5 +46,5 @@ class ArticlesController extends Controller
         return view('frontend.sections.articles.articleCreate');
     }
 
-    
+
 }

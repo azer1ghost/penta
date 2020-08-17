@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Pages;
 use Illuminate\Http\Request;
 use App\Classes\FrontMenu;
+use Illuminate\Support\Facades\App;
 
 class PageController extends Controller
 {
@@ -16,7 +17,10 @@ class PageController extends Controller
 
     public function getPage($slug)
     {
-        $page = Pages::where('slug', $slug)->first();
+        $locale = App::getLocale();
+        $page = Pages::withTranslation($locale)->where('slug', $slug)->first();
+        $page = $page->translate($locale);
+
         return view('frontend.sections.pages.pageViewer',['page' => $page]);
     }
 }

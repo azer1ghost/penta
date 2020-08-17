@@ -13,46 +13,46 @@ $("a").bind("click", function (event) {
     }
 });
 
-
-// active current menu item
-$(document).ready(function() {
-
-    // Get current page URL
-    let url = window.location.href;
-
-    // remove # from URL
-    url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
-
-    // remove parameters from URL
-    url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?"));
-
-    // remove last / "drop" form end of url
-    url = url.endsWith("/") ? url.slice(0, url.length - 1) : url
-
-    // If file name not avilable
-    if(url == ''){
-        url = '';
-    }
-
-    //console.log("real-URL : "+url)
-
-    // Loop all menu items
-    $('.menu li').each(function(){
-
-        // select href
-        let href = $(this).find('a').attr('href');
-
-        if(href == ''){
-            href = url;
-        }
-        // Check filename
-        if(url == href){
-
-            // Add active class
-            $(this).addClass('current-menu-item');
-        }
-    });
-});
+//
+// // active current menu item
+// $(document).ready(function() {
+//
+//     // Get current page URL
+//     let url = window.location.href;
+//
+//     // remove # from URL
+//     url = url.substring(0, (url.indexOf("#") == -1) ? url.length : url.indexOf("#"));
+//
+//     // remove parameters from URL
+//     url = url.substring(0, (url.indexOf("?") == -1) ? url.length : url.indexOf("?"));
+//
+//     // remove last / "drop" form end of url
+//     url = url.endsWith("/") ? url.slice(0, url.length - 1) : url
+//
+//     // If file name not avilable
+//     if(url == ''){
+//         url = '';
+//     }
+//
+//     //console.log("real-URL : "+url)
+//
+//     // Loop all menu items
+//     $('.menu li').each(function(){
+//
+//         // select href
+//         let href = $(this).find('a').attr('href');
+//
+//         if(href == ''){
+//             href = url;
+//         }
+//         // Check filename
+//         if(url == href){
+//
+//             // Add active class
+//             $(this).addClass('current-menu-item');
+//         }
+//     });
+// });
 
 
 

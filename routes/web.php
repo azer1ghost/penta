@@ -11,7 +11,7 @@ Route::group(['prefix' => \UriLocalizer::localeFromRequest()], function(){
 
     Route::get('/', 'PageController@index')->name('Page.index');
     Route::get('/pages/{slug}', 'PageController@getPage')->where('slug', '^((?!authors).)*$')->name('Page.read');
-    Route::get('/pages/authors', 'AuthorController@index')->name('Author.list');
+    Route::get('/pages/authors', 'AuthorController@authors')->name('Author.list');
 
     Route::prefix('article')->group(function () {
         Route::get('/all', 'ArticlesController@index')->name('Articles.list');
@@ -20,11 +20,11 @@ Route::group(['prefix' => \UriLocalizer::localeFromRequest()], function(){
     });
 
     Route::prefix('author')->group(function () {
-        Route::get('/login', 'AuthorLoginController@index')->name('Author.login');
-        Route::post('/loginCheck', 'AuthorLoginController@authenticate')->name('Author.check');
-        Route::get('/register', 'AuthorLoginController@register')->name('Author.register');
-        Route::get('/logout', 'AuthorLoginController@logout')->name('Author.logout');
-        Route::post('/reset', 'AuthorLoginController@resetPass')->name('Author.reset');
+        Route::get('/login', 'AuthorController@index')->name('Author.login');
+        Route::post('/loginCheck', 'AuthorController@authenticate')->name('Author.check');
+        Route::get('/register', 'AuthorController@register')->name('Author.register');
+        Route::get('/logout', 'AuthorController@logout')->name('Author.logout');
+        Route::post('/reset', 'AuthorController@resetPass')->name('Author.reset');
         Route::get('/profile', function () {
             echo "welcome";
         })->middleware('auth');

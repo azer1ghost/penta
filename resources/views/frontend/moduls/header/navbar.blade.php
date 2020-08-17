@@ -1,6 +1,3 @@
-<?php use App\Classes\FrontMenu; ?>
-
-
 <div class="sj-navigationarea">
     <strong class="sj-logo"><a href="{{route('Page.index')}}"><img style="max-height: 50px"
                                                                    src="{{ asset('storage/')."/".setting('site.logo') }}"
@@ -16,7 +13,7 @@
                 <i class="lnr lnr-menu"></i>
             </button>
             <div class="collapse navbar-collapse sj-navigation" id="navbarNav">
-                {!! FrontMenu::getLinks() !!}
+                {!! menu('site', 'frontend.moduls.header.menu') !!}
             </div>
         </nav>
         <a class="sj-btntopsearch" href="#sj-searcharea"><i class="lnr lnr-magnifier"></i></a>
