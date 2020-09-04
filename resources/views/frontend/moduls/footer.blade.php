@@ -11,7 +11,7 @@
                             <a href="index-2.html"><img src="{{ asset('storage/')."/".setting('site.logo') }}" alt="image description"></a>
                         </strong>
                         <div class="sj-description">
-                            <p> {{ substr(setting('site.description'), 0, 90) }} <a href="javascript:void(0);">Read More</a></p> 
+                            <p> {{ substr(setting('site.description'), 0, 90) }} <a href="javascript:void(0);">Read More</a></p>
                         </div>
                         <ul class="sj-socialicons sj-socialiconssimple">
                             <li class="sj-facebook"><a href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a></li>
@@ -38,23 +38,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 float-left">
-                    <div class="sj-fcol sj-widget sj-widgetresources">
-                        <div class="sj-widgetheading">
-                            <h3>Resources</h3>
-                        </div>
-                        <div class="sj-widgetcontent">
-                            <ul>
-                                <li><a href="javascript:void(0);">Authors</a></li>
-                                <li><a href="javascript:void(0);">Librarians</a></li>
-                                <li><a href="javascript:void(0);">Sponsors &amp; Advertisers</a></li>
-                                <li><a href="javascript:void(0);">Press &amp; Media</a></li>
-                                <li class="sj-more"><a href="javascript:void(0);">more</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 float-left">
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-4 float-left">
                     <div class="sj-fcol sj-widget sj-widgetcontactus">
                         <div class="sj-widgetheading">
                             <h3>Get In Touch</h3>
@@ -71,6 +56,30 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-12 col-sm-6 col-md-2 col-lg-2 float-left">
+                    @auth
+                        <div class="sj-languages float-right">
+                            <a id="sj-languages-button" href="javascript:void(0);">
+                                <img src="{{asset('storage')."/".$currentLanguage->flag}}" alt="image description">
+                                <span style="text-transform: uppercase">{{ $currentLanguage->locale }}</span>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul>
+                                @foreach ($altLocalizedUrls as $lng)
+                                    <li>
+                                        <a hreflang="{{ $lng['locale'] }}" href="{{ $lng['url'] }}">
+                                            <img src="{{ asset('storage')."/".$lng['flag']}}" alt="image description">
+                                            <span>{{ $lng['locale'] }}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endauth
+                </div>
+
+
             </div>
             <div class="sj-footerbottom">
                 <p class="sj-copyrights">© {{date("Y")}} <span>{{setting('site.title')}}</span>. All Rights Reserved</p>

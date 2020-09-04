@@ -21,10 +21,12 @@ Route::group(['prefix' => \UriLocalizer::localeFromRequest()], function(){
 
     Route::prefix('author')->group(function () {
         Route::get('/login', 'AuthorController@index')->name('Author.login');
-        Route::post('/loginCheck', 'AuthorController@authenticate')->name('Author.check');
-        Route::get('/register', 'AuthorController@register')->name('Author.register');
+        Route::post('/login', 'AuthorController@authenticate')->name('Author.check');
+        Route::get('/register', 'AuthorController@index')->name('Author.register');
         Route::get('/logout', 'AuthorController@logout')->name('Author.logout');
-        Route::post('/reset', 'AuthorController@resetPass')->name('Author.reset');
+        Route::get('/reset', 'AuthorController@index')->name('Author.reset');
+        Route::get('/set-password', 'AuthorController@index')->name('Author.setpassword');
+        Route::post('/reset', 'AuthorController@recover')->name('Author.recover');
         Route::get('/profile', function () {
             echo "welcome";
         })->middleware('auth');
@@ -38,3 +40,5 @@ Route::group(['prefix' => \UriLocalizer::localeFromRequest()], function(){
 //Route::middleware(['admin'])->group(function () {
 //
 //});
+
+

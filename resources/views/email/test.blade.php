@@ -1,3 +1,7 @@
 <body>
-    Here is mesage yupii
+
+<a href="{{$link}}">Click here to reset pasword</a>
+    <br>
+{{$link}}
+
 </body>

@@ -43,7 +43,8 @@ class ArticlesController extends Controller
 
     public function create()
     {
-        return view('frontend.sections.articles.articleCreate');
+        $categories = Categories::all();
+        return view('frontend.sections.articles.articleCreate',compact('categories'));
     }
 
 

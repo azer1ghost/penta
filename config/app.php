@@ -162,14 +162,10 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        // Menu Service Provider (html menu creator)
-        Spatie\Menu\Laravel\MenuServiceProvider::class,
-
         // Helper Service Provider
         browner12\helpers\HelperServiceProvider::class,
 
         // Translation Service Provider
-        Illuminate\Translation\TranslationServiceProvider::class,
         Waavi\Translation\TranslationServiceProvider::class,
         /*
          * Package Service Providers...
@@ -236,8 +232,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        // Menu
-        'Menu' => Spatie\Menu\Laravel\Facades\Menu::class,
 
         // Language url maker
         'UriLocalizer'	=> Waavi\Translation\Facades\UriLocalizer::class,

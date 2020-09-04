@@ -22,19 +22,18 @@
                         </a>
                         <nav class="sj-usernav">
                             <ul>
-                                <li><a href="underreview.html"><i class="lnr lnr-sync"></i><span>Articles Under Review</span></a></li>
-                                <li><a href="aticle-list.html"><i class="lnr lnr-sync"></i><span>Aticle List</span></a></li>
-                                <li><a href="accountsettings.html"><i class="lnr lnr-lock"></i><span>Account Settings</span></a></li>
-                                <li><a href="{{route('Author.logout')}}"><i class="lnr lnr-exit"></i><span>Logout</span></a></li>
-
+                                <li><a href="#"><i class="lnr lnr-sync"></i><span>Articles Under Review</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-sync"></i><span>Aticle List</span></a></li>
+                                <li><a href="#"><i class="lnr lnr-lock"></i><span>Account Settings</span></a></li>
+                                <li><a href="{{route('Author.logout')}}"><i class="lnr lnr-exit"></i><span>{{lang('topbar','logout')}}</span></a></li>
                             </ul>
                         </nav>
                     </div>
                     @else
-                        <li><a href="{{route('Author.login')}}">{{trans('header.login')}}</a></li>
+                        <li><a href="{{route('Author.login')}}">{{lang('topbar','login')}}</a></li>
 
                         @if (Route::has('Author.login'))
-                            <li><a href="{{route('Author.register')}}">@lang('header.register')</a></li>
+                            <li><a href="{{route('Author.register')}}">{{lang('topbar','register')}}</a></li>
                         @endif
                     @endauth
                 </ul>
